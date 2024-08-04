@@ -8,10 +8,6 @@ describe("Crawl top 250 IMDB movies", () => {
   it("passes", () => {
     cy.visit("https://www.imdb.com/chart/top/");
 
-    cy.wait(1000);
-
-    cy.scrollTo("bottom");
-
     for (let index = 0; index < ITEMS_TO_CRAWL; index++) {
       const movie: IMovieIMDB = {
         id: index + 1,
@@ -48,6 +44,12 @@ describe("Crawl top 250 IMDB movies", () => {
         }
       );
 
+      // Get movie image
+      cy.get(".ipc-promptable-base__content .ipc-media img").then(($img) => {
+        movie.image_vertical =
+          $img.attr("srcset")?.split(", ")?.at(-1)?.split(" ")[0] || "";
+      });
+
       // Get movie title
       cy.get(".ipc-promptable-base__content")
         .first()
@@ -55,15 +57,18 @@ describe("Crawl top 250 IMDB movies", () => {
         .find(".ipc-title")
         .then(($div) => {
           movie.title = $div.text();
+
+          // if (isElementExist($div, '[data-testid="loader"]')) {
+          // }
         });
 
-      // Get movie image
-      cy.get(".ipc-promptable-base__content .ipc-media img").then(($img) => {
-        movie.image_vertical =
-          $img.attr("srcset")?.split(", ")?.at(-1)?.split(" ")[0] || "";
-      });
+      cy.wait(500);
 
-      cy.wait(1000);
+      cy.get(".ipc-promptable-base__panel").then(($div) => {
+        if ($div.find('[data-testid="loader"]').length) {
+          cy.wait(500);
+        }
+      });
 
       // Get about
       cy.get(".ipc-promptable-base__content .cTFzHt").then(($div) => {

@@ -87,8 +87,6 @@ describe("Crawl filimo movies", () => {
           movie.about = $div.text().trim();
         })
         .then(() => {
-          console.log(movie);
-
           filimoMovies.push(movie);
         });
     }

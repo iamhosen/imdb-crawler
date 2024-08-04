@@ -4,7 +4,7 @@ import type IMovieIMDB from "../types/movieIMDB";
 const ITEMS_TO_CRAWL = 250;
 const movies: IMovieIMDB[] = [];
 
-describe("template spec", () => {
+describe("Crawl top 250 IMDB movies", () => {
   it("passes", () => {
     cy.visit("https://www.imdb.com/chart/top/");
 
@@ -17,9 +17,9 @@ describe("template spec", () => {
         id: index + 1,
         title: "",
         release_year: "",
-        duration: 0,
+        duration: "",
         mpa_rating: "",
-        rating_stars: 0,
+        rate: "",
         genre: [],
         people: [],
         image_vertical: "",
@@ -32,8 +32,6 @@ describe("template spec", () => {
 
       cy.get(openMovieModalButton).click();
 
-      cy.wait(1000);
-
       cy.get('[data-testid="btp_ml"] > .ipc-inline-list__item').each(
         (li, index) => {
           switch (index) {
@@ -41,7 +39,7 @@ describe("template spec", () => {
               movie.release_year = li.text();
               break;
             case 1:
-              movie.duration = parseInt(li.text());
+              movie.duration = li.text();
               break;
             case 2:
               movie.mpa_rating = li.text();
@@ -65,14 +63,7 @@ describe("template spec", () => {
           $img.attr("srcset")?.split(", ")?.at(-1)?.split(" ")[0] || "";
       });
 
-      // Get movie about
-      cy.get(".ipc-promptable-base__content")
-        .first()
-        .find("div")
-        .eq(9)
-        .then(($div) => {
-          movie.about = $div.text();
-        });
+      cy.wait(1000);
 
       // Get about
       cy.get(".ipc-promptable-base__content .cTFzHt").then(($div) => {
@@ -87,7 +78,7 @@ describe("template spec", () => {
       // Get rate
       cy.get(".ipc-rating-star--baseAlt > .ipc-rating-star--rating").then(
         (star) => {
-          movie.rate = parseInt(star.text());
+          movie.rate = star.text();
         }
       );
 

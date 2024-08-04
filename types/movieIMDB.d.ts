@@ -5,10 +5,9 @@ export default interface IMovieIMDB {
   title: string;
   title_fa?: string;
   release_year: string;
-  duration: number;
-  rate?: number;
+  duration: string;
+  rate?: string;
   mpa_rating: string;
-  rating_stars: number;
   genre: string[];
   people: IMovieCrew[];
   image_vertical: string;

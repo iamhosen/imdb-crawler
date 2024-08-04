@@ -1,5 +1,12 @@
 import type IMovieCrew from "./movieCrew";
 
+export interface IFilimoMovie {
+  title: string;
+  title_fa: string;
+  country: string;
+  about: string;
+}
+
 export default interface IMovieIMDB {
   id: number;
   title: string;

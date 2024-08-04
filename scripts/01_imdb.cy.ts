@@ -1,3 +1,4 @@
+import files from "../constants/files";
 import IMovieCrew from "../types/movieCrew";
 import type IMovieIMDB from "../types/movieIMDB";
 
@@ -57,18 +58,23 @@ describe("Crawl top 250 IMDB movies", () => {
         .find(".ipc-title")
         .then(($div) => {
           movie.title = $div.text();
-
-          // if (isElementExist($div, '[data-testid="loader"]')) {
-          // }
         });
 
-      cy.wait(500);
+      ///////// Wait for loading
+      cy.wait(1000);
 
       cy.get(".ipc-promptable-base__panel").then(($div) => {
         if ($div.find('[data-testid="loader"]').length) {
-          cy.wait(500);
+          cy.wait(1000);
         }
       });
+
+      cy.get(".ipc-promptable-base__panel").then(($div) => {
+        if ($div.find('[data-testid="loader"]').length) {
+          cy.wait(1000);
+        }
+      });
+      ////////////////////////////////////
 
       // Get about
       cy.get(".ipc-promptable-base__content .cTFzHt").then(($div) => {
@@ -116,6 +122,6 @@ describe("Crawl top 250 IMDB movies", () => {
   });
 
   after(() => {
-    cy.writeFile("./data/top-250-imdb-movies.json", JSON.stringify(movies));
+    cy.writeFile(files.movies, JSON.stringify(movies));
   });
 });

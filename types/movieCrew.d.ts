@@ -4,6 +4,6 @@ export default interface IMovieCrew {
   name: string;
   name_fa?: string;
   avatar_url?: string;
-  birth?: number;
+  birth?: Maybe<number>;
   about?: string;
 }

@@ -1,7 +1,8 @@
 export default {
-  movies: "./data/top-250-imdb-movies.json",
-  crews: "./data/top-250-imdb-movies-crews.json",
-  crewsIncomplete: "./data/incomplete-crews.json",
-  filimoMovies: "./data/top-250-imdb-movies-filimo.json",
-  mergedMovies: "./data/top-250-imdb-movies-merged.json",
+  movies: "./data/raw-movies.json",
+  crews: "./data/filimo-movies-crews.json",
+  crewsIncomplete: "./data/filimo-movies-crews-failed.json",
+  filimoMovies: "./data/filimo-movies.json",
+  mergedMovies: "./data/top-250-imdb-movies-filimo.json",
+  finalMovies: "./data/top-250-imdb-movies.json",
 };

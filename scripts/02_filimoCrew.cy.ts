@@ -52,12 +52,54 @@ describe("Crawl filimo movie crews", () => {
     });
   });
 
-  it("passes", () => {
+  it("passes 0 to 50", () => {
     cy.on("uncaught:exception", () => false);
 
-    movies.forEach((movie) => {
-      movie.people.forEach((person) => processPerson(person, movie));
-    });
+    for (let index = 0; index < 50; index++) {
+      movies[index].people.forEach((person) =>
+        processPerson(person, movies[index])
+      );
+    }
+  });
+
+  it("passes 50 to 100", () => {
+    cy.on("uncaught:exception", () => false);
+
+    for (let index = 50; index < 100; index++) {
+      movies[index].people.forEach((person) =>
+        processPerson(person, movies[index])
+      );
+    }
+  });
+
+  it("passes 100 to 150", () => {
+    cy.on("uncaught:exception", () => false);
+
+    for (let index = 100; index < 150; index++) {
+      movies[index].people.forEach((person) =>
+        processPerson(person, movies[index])
+      );
+    }
+  });
+
+  it("passes 150 to 200", () => {
+    cy.on("uncaught:exception", () => false);
+
+    for (let index = 150; index < 200; index++) {
+      movies[index].people.forEach((person) =>
+        processPerson(person, movies[index])
+      );
+    }
+  });
+
+  it("passes 200 to 250", () => {
+    cy.on("uncaught:exception", () => false);
+
+    for (let index = 200; index < 250; index++) {
+      movies[index].people.forEach((person) =>
+        processPerson(person, movies[index])
+      );
+    }
   });
 
   after(() => {

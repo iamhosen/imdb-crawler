@@ -8,7 +8,7 @@ const filimoMovies: IFilimoMovie[] = [];
 
 describe("Crawl filimo movies", () => {
   before(() => {
-    cy.readFile(files.movies).then((moviesFile: IMovieIMDB[]) => {
+    cy.readFile(files.rawMovies).then((moviesFile: IMovieIMDB[]) => {
       movies = moviesFile;
     });
   });

@@ -21,5 +21,6 @@ export default interface IMovieIMDB {
   image_horizontal?: string;
   about: string;
   about_fa?: string;
+  description_fa?: string;
   country?: string;
 }

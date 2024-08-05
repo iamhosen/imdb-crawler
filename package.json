@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
-    "crawl": "cypress run --spec scripts/01_imdb.cy.ts && cypress run --spec scripts/02_filimoCrew.cy.ts && ts-node scripts/03_cinamaMovies.ts"
+    "crawl": "cypress run && ts-node scripts/04_cinamaMovies.ts"
   },
   "keywords": [],
   "author": "",

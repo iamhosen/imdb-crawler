@@ -105,6 +105,6 @@ describe("Crawl filimo movies", () => {
   });
 
   after(() => {
-    cy.writeFile(files.mergedMovies, JSON.stringify(movies));
+    cy.writeFile(files.filimoMovies, JSON.stringify(movies));
   });
 });

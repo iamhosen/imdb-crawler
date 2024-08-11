@@ -3,11 +3,11 @@ import { getElementText } from "../utils/selector";
 
 const result: string[] = [];
 
-describe("Crawl top 250 IMDB movies", () => {
+describe("Search in IMDB...", () => {
   it("passes", () => {
-    const query = Cypress.env("query");
+    const search = Cypress.env("search");
 
-    cy.visit("https://www.imdb.com/find/?q=" + query);
+    cy.visit("https://www.imdb.com/find/?q=" + search);
 
     cy.get(
       `[data-testid="find-results-section-title"] ul.ipc-metadata-list li .ipc-metadata-list-summary-item__tc`

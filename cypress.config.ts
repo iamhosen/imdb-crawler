@@ -6,5 +6,6 @@ export default defineConfig({
       // implement node event listeners here
     },
     specPattern: "scripts/**/*.cy.ts",
+    video: true,
   },
 });
